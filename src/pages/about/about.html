@@ -9,12 +9,14 @@
 <ion-content padding>
   <ion-grid>
     <ion-row>
-      <ion-label col-4 color="primary">Search</ion-label>
-      <ion-input col-6 placeholder="artist"></ion-input>
-      <button col-2 ion-button color="dark">Go</button>
+      <ion-label color="primary">Search</ion-label>
+      <ion-item>
+        <ion-input col-6 placeholder="artist"></ion-input>
+      </ion-item>
+        <button item-end ion-button color="dark"  (click)="searchClicked(item)">Go</button>
     </ion-row>
   </ion-grid>
   <ion-list>
-      <ion-item *ngFor="let item of items">{{item.name}}</ion-item>
+      <ion-item *ngFor="let item of music">{{item.artistName}}</ion-item>
   </ion-list>
 </ion-content>
