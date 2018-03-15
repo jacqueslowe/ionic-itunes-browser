@@ -1,0 +1,8 @@
+{
+  "name": "menus",
+  "app_id": "ecadc571",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
