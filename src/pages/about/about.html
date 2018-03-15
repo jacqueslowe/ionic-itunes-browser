@@ -11,12 +11,12 @@
     <ion-row>
       <ion-label color="primary">Search</ion-label>
       <ion-item>
-        <ion-input col-6 placeholder="artist"></ion-input>
+        <ion-input col-6 placeholder="artist" type="search" [(ngModel)]="searchValue"></ion-input>
       </ion-item>
         <button item-end ion-button color="dark"  (click)="searchClicked(item)">Go</button>
     </ion-row>
   </ion-grid>
   <ion-list>
-      <ion-item *ngFor="let item of music">{{item.artistName}}</ion-item>
+      <ion-item *ngFor="let item of music" class="pull-left">{{item.artistName}}<br><strong><span class="pull-right">{{item.trackName}}</span></strong></ion-item>
   </ion-list>
 </ion-content>

@@ -11,7 +11,7 @@ export class AboutPage {
   constructor(public navCtrl: NavController, private itunesService: ItunesService,  ) {
 
   }
-  
+  searchValue:any = "Depeche Mode";
   items:any[] =[
       {name:'Frank Sinatra'},
       {name: 'Elvis Presely'},
@@ -33,8 +33,7 @@ export class AboutPage {
        // {
              let timeoutId = setTimeout(() => {  
                 this.itunesService.getMusic( 
-                   //" this.searchService.getSearch()"
-                   "depeche mode"
+                    this.searchValue
                         ).subscribe(
                                     music => {this.processSucessResponse(music);},
                                     error =>  this.errorMessage = <any>error);

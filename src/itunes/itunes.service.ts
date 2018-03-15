@@ -24,7 +24,7 @@ export class ItunesService {
     getMusic(search: any): Observable<any[]> {
         
         let requestURL:string = this.constants.itunesUrl+
-            this.searchTerm+search.searchChoice +
+            this.searchTerm+search +
             this.searchLimit+
             this.searchMediaType+"song";
             
