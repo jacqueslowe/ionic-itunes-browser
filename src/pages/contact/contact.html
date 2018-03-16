@@ -1,17 +1,20 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Contact
+      iTunes Movies
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-  <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
+<ion-content padding>
+  <ion-grid>
     <ion-item>
-      <ion-icon name="ionic" item-start></ion-icon>
-      @ionicframework
+        <ion-label floating>Movie Title</ion-label>
+        <ion-input type="text" [(ngModel)]="searchValue" name="searchValue"></ion-input>
+        <button item-end ion-button color="dark"  (click)="searchClicked(item)" class="pull-right">Go</button>
     </ion-item>
+  </ion-grid>
+  <ion-list>    
+      <ion-item *ngFor="let item of music" class="pull-left">{{item.artistName}}<br><strong><span class="pull-right">{{item.trackName}}</span></strong><ion-badge item-end>{{item.collectionPrice}}</ion-badge></ion-item>
   </ion-list>
 </ion-content>

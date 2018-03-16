@@ -1,17 +1,13 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      iTunes Music Bits
+      iTunes Music
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
   <ion-grid>
-    <!--ion-row>
-        <ion-input col-6 placeholder="artist" type="search" [(ngModel)]="searchValue"></ion-input>
-        <button item-end ion-button color="dark"  (click)="searchClicked(item)" class="pull-right">Go</button>
-    </ion-row-->
     <ion-item>
         <ion-label floating>Artist, Song</ion-label>
         <ion-input type="text" [(ngModel)]="searchValue" name="searchValue"></ion-input>
@@ -19,6 +15,11 @@
     </ion-item>
   </ion-grid>
   <ion-list>
-      <ion-item *ngFor="let item of music" class="pull-left">{{item.artistName}}<br><strong><span class="pull-right">{{item.trackName}}</span></strong></ion-item>
+      <ion-item *ngFor="let item of music" 
+        class="pull-left" 
+        (click)="play(item)">{{item.artistName}}<br><strong><span class="pull-right">{{item.trackName}}</span></strong>
+        <ion-badge *ngIf="playerService.selectedTrack && item.trackId === playerService.selectedTrack.trackId" color="danger" item-end>{{playerService.playerState}}</ion-badge>
+        <ion-badge item-end>{{item.trackPrice}}</ion-badge>
+        </ion-item>
   </ion-list>
 </ion-content>

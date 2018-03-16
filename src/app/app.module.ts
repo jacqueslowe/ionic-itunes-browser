@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { Constants } from '../constants';
 import { MyApp } from './app.component';
 import { ItunesService } from '../itunes/itunes.service';
+import { PlayerService } from '../player/player.service';
 
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
@@ -40,6 +41,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SplashScreen,
     Constants,
     ItunesService,
+    PlayerService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

@@ -34,6 +34,20 @@ export class ItunesService {
                         .map(res => this.extractData<any[]>(res))
                         .catch(this.handleError);
     }
+
+    getMovies(search: any): Observable<[any]> {
+        
+        let requestURL:string = this.constants.itunesUrl+
+            this.searchTerm+search +
+            this.searchLimit+
+            this.searchMediaType+"movie";
+            
+        console.log("ItunesService.getMovies(): "+ requestURL);
+
+        return this.http.get(requestURL)
+                        .map(res => this.extractData<any[]>(res))
+                        .catch(this.handleError);
+    }
     private extractData<T>(res: Response) {
         console.log("ItunesService.extractData(): "+res.toString() );
         let body = res.json();
