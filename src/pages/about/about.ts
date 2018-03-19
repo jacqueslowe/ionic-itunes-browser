@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ItunesService } from '../../itunes/itunes.service';
 import { PlayerService } from '../../player/player.service';
+import { LoadingController } from 'ionic-angular';
 
 @Component({
   selector: 'page-about',
@@ -10,7 +11,8 @@ import { PlayerService } from '../../player/player.service';
 export class AboutPage {
   
   
-  constructor(public navCtrl: NavController, private itunesService: ItunesService, public playerService: PlayerService ) {
+  constructor(public navCtrl: NavController, private itunesService: ItunesService, public playerService: PlayerService, public loadingController: LoadingController ) {
+   
     this.playerService.getStream().subscribe(
                           (val) => { this.playerStateChanged();  },
                           (err) => { console.log("MusicListComponent.playerService..subscribe.error", err) },
@@ -19,7 +21,7 @@ export class AboutPage {
   }
   
   searchValue:any = "Depeche Mode";
-
+  loader:any= null;
   music:any[]=null;
   selectedTrack:any=null;
   errorMessage:any=null;
@@ -50,26 +52,26 @@ export class AboutPage {
             }
         }
     }
+
     getData()
     {
-       
         this.music= null;
-       // this.errorMessage = null;
-        //if( this.itunesService.hasSearchFilter() === true)
-       // {
-             let timeoutId = setTimeout(() => {  
-                this.itunesService.getMusic( 
-                    this.searchValue
-                        ).subscribe(
-                                    music => {this.processSucessResponse(music);},
-                                    error =>  this.errorMessage = <any>error);
-                        }, 1500);
-       // }
+        this.loader = this.loadingController.create({
+          content: "Fetching music..."
+        });
+        this.loader.present();
+
+        let timeoutId = setTimeout(() => {  
+          this.itunesService.getMusic( 
+              this.searchValue
+                  ).subscribe(
+                              music => {this.processSucessResponse(music);},
+                              error =>  this.errorMessage = <any>error);
+                  }, 1500);
     }
     processSucessResponse(music: any[] )
     {
         this.music = music; 
-      //  this.spinnerService.hide();
-     //   this.toastService.success("iTunes returned " + this.books.length + " books!" );
+        this.loader.dismiss();
     }  
 }
