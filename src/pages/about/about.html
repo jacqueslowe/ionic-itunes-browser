@@ -6,7 +6,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
   <ion-searchbar [(ngModel)]="searchValue" (search)="searchClicked()" placeholder="Search iTunes music"></ion-searchbar>
   <ion-list>
     <ion-item *ngFor="let item of music" (click)="play(item)">
