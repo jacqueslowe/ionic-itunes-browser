@@ -7,8 +7,8 @@ import { MyApp } from './app.component';
 import { ItunesService } from '../itunes/itunes.service';
 import { PlayerService } from '../player/player.service';
 
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
+import { MusicPage } from '../pages/music/music';
+import { VideoPage } from '../pages/video/video';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 
@@ -18,8 +18,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
-    ContactPage,
+    MusicPage,
+    VideoPage,
     HomePage,
     TabsPage
   ],
@@ -31,8 +31,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
-    ContactPage,
+    MusicPage,
+    VideoPage,
     HomePage,
     TabsPage
   ],
