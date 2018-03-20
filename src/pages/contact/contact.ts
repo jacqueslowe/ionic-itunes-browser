@@ -14,9 +14,16 @@ export class ContactPage {
   }
 
   searchValue:any = "Marvel";
-  music:any[]=null;
+  movies:any[]=null;
   errorMessage:any=null;
   loader:any= null;
+  selectedMovie=null;
+
+
+    play(track:any)
+    {
+      this.selectedMovie=track;
+    }
 
     searchClicked(tab:any)
     {
@@ -24,7 +31,7 @@ export class ContactPage {
     }   
     getData()
     {
-        this.music= null;
+        this.movies= null;
         this.loader = this.loadingController.create({
           content: "Fetching movies..."
         });
@@ -40,7 +47,7 @@ export class ContactPage {
     }
     processSucessResponse(music: any[] )
     {
-      this.music = music; 
+      this.movies = music; 
       this.loader.dismiss();
     }  
 }

@@ -15,7 +15,13 @@
       </ion-avatar>
       <h2>{{item.trackName}}</h2>
       <p>{{item.artistName}}</p>
-      <ion-badge *ngIf="playerService.selectedTrack && item.trackId === playerService.selectedTrack.trackId" color="danger" item-end>{{playerService.playerState}}</ion-badge>
+      <div *ngIf="playerService.selectedTrack && item.trackId === playerService.selectedTrack.trackId" item-end>
+        {{playerService.playerState}}
+        <!--ion-icon name="play"></ion-icon-->
+        <!--ion-icon *ngIf="playerService.playerState == playing" name="play"></ion-icon>
+        <ion-icon *ngIf="playerService.playerState == paused" name="pause"></ion-icon-->
+        
+      </div>
     </ion-item>
   </ion-list>
 </ion-content>
