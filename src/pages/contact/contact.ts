@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ItunesService } from '../../itunes/itunes.service';
+import { LoadingController } from 'ionic-angular';
 
 @Component({
   selector: 'page-contact',
@@ -8,12 +9,14 @@ import { ItunesService } from '../../itunes/itunes.service';
 })
 export class ContactPage {
   
-  constructor(public navCtrl: NavController, private itunesService: ItunesService,  ) {
+  constructor(public navCtrl: NavController, private itunesService: ItunesService, public loadingController: LoadingController) {
 
   }
+
   searchValue:any = "Marvel";
   music:any[]=null;
   errorMessage:any=null;
+  loader:any= null;
 
     searchClicked(tab:any)
     {
@@ -22,19 +25,22 @@ export class ContactPage {
     getData()
     {
         this.music= null;
-      
-             let timeoutId = setTimeout(() => {  
-                this.itunesService.getMovies( 
-                    this.searchValue
-                        ).subscribe(
-                                    music => {this.processSucessResponse(music);},
-                                    error =>  this.errorMessage = <any>error);
-                        }, 1500);
+        this.loader = this.loadingController.create({
+          content: "Fetching movies..."
+        });
+        this.loader.present();
+
+        let timeoutId = setTimeout(() => {  
+          this.itunesService.getMovies( 
+              this.searchValue
+                  ).subscribe(
+                              music => {this.processSucessResponse(music);},
+                              error =>  this.errorMessage = <any>error);
+                  }, 1500);
     }
     processSucessResponse(music: any[] )
     {
-        this.music = music; 
-      //  this.spinnerService.hide();
-     //   this.toastService.success("iTunes returned " + this.books.length + " books!" );
+      this.music = music; 
+      this.loader.dismiss();
     }  
 }
