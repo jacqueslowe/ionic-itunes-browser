@@ -16,7 +16,6 @@
       <h2>{{item.trackName}}</h2>
       <p>{{item.artistName}}</p>
       <ion-badge *ngIf="playerService.selectedTrack && item.trackId === playerService.selectedTrack.trackId" color="danger" item-end>{{playerService.playerState}}</ion-badge>
-      <ion-badge item-end>{{item.trackPrice}}</ion-badge>
     </ion-item>
   </ion-list>
 </ion-content>
