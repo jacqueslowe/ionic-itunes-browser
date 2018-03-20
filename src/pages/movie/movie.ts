@@ -4,10 +4,10 @@ import { ItunesService } from '../../itunes/itunes.service';
 import { LoadingController } from 'ionic-angular';
 
 @Component({
-  selector: 'page-video',
-  templateUrl: 'video.html'
+  selector: 'page-movie',
+  templateUrl: 'movie.html'
 })
-export class VideoPage {
+export class MoviePage {
   
   constructor(public navCtrl: NavController, private itunesService: ItunesService, public loadingController: LoadingController) {
   }

@@ -9,8 +9,6 @@ import { LoadingController } from 'ionic-angular';
   templateUrl: 'music.html'
 })
 export class MusicPage {
-  
-  
   constructor(public navCtrl: NavController, private itunesService: ItunesService, public playerService: PlayerService, public loadingController: LoadingController ) {
    
     this.playerService.getStream().subscribe(

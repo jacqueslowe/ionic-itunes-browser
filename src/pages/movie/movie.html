@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      iTunes Movies
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-searchbar [(ngModel)]="searchValue" (search)="searchClicked()" placeholder="Search iTunes movies"></ion-searchbar>
+  <ion-list>    
+      <ion-item *ngFor="let item of movies" class="pull-left item item-text-wrap"  (click)="play(item)">{{item.artistName}}<br>
+        <strong>
+          <span class="pull-right">{{item.trackName}}</span>
+        </strong>
+        <ion-thumbnail item-start>
+          <img src={{item.artworkUrl100}}>
+        </ion-thumbnail>
+        <ion-badge *ngIf="!selectedMovie || (selectedMovie && selectedMovie.trackId !== item.trackId)" item-end>{{item.collectionPrice}}</ion-badge>
+        <div *ngIf="selectedMovie && selectedMovie.trackId === item.trackId">
+          <p>
+              {{item.longDescription}}
+            </p>
+            
+        <!--video src={{selectedMovie.previewUrl}} controls></video-->
+      </div>
+      </ion-item>
+  </ion-list>
+</ion-content>

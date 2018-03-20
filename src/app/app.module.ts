@@ -7,7 +7,7 @@ import { MyApp } from './app.component';
 import { ItunesService } from '../itunes/itunes.service';
 import { PlayerService } from '../player/player.service';
 import { MusicPage } from '../pages/music/music';
-import { VideoPage } from '../pages/video/video';
+import { MoviePage } from '../pages/movie/movie';
 import { HomePage } from '../pages/home/home';
 
 import { TabsPage } from '../pages/tabs/tabs';
@@ -19,7 +19,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   declarations: [
     MyApp,
     MusicPage,
-    VideoPage,
+    MoviePage,
     HomePage,
     TabsPage
   ],
@@ -32,7 +32,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   entryComponents: [
     MyApp,
     MusicPage,
-    VideoPage,
+    MoviePage,
     HomePage,
     TabsPage
   ],
