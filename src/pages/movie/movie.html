@@ -1,8 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>
-      iTunes Movies
-    </ion-title>
+    <ion-title><ion-icon name="logo-apple"></ion-icon> iTunes Movies</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -21,7 +19,12 @@
             <p>
                 {{item.longDescription}}
             </p>
-            <video width="640" height="480" src={{selectedMovie.previewUrl}} controls></video>
+            <!--video width="320" height="240" controls>
+                <source src="movie.mp4" type="video/mp4">
+                <source src="movie.ogg" type="video/ogg">
+                Your browser does not support the video tag.
+            </video-->
+            <!--video width="320" height="240" src={{selectedMovie.previewUrl}} controls>Browser does not support the video tag.</video-->
         </div>
       </ion-item>
   </ion-list>
