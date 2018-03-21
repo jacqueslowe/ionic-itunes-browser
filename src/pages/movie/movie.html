@@ -18,12 +18,11 @@
         </ion-thumbnail>
         <ion-badge *ngIf="!selectedMovie || (selectedMovie && selectedMovie.trackId !== item.trackId)" item-end>{{item.collectionPrice}}</ion-badge>
         <div *ngIf="selectedMovie && selectedMovie.trackId === item.trackId">
-          <p>
-              {{item.longDescription}}
+            <p>
+                {{item.longDescription}}
             </p>
-            
-        <!--video src={{selectedMovie.previewUrl}} controls></video-->
-      </div>
+            <video width="640" height="480" src={{selectedMovie.previewUrl}} controls></video>
+        </div>
       </ion-item>
   </ion-list>
 </ion-content>
