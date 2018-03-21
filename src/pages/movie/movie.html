@@ -4,10 +4,11 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
   <ion-searchbar [(ngModel)]="searchValue" (search)="searchClicked()" placeholder="Search iTunes movies"></ion-searchbar>
   <ion-list>    
-      <ion-item *ngFor="let item of movies" class="pull-left item item-text-wrap"  (click)="play(item)">{{item.artistName}}<br>
+      <ion-item *ngFor="let item of movies" class="pull-left item item-text-wrap"  
+        (click)="play(item)">{{item.artistName}}<br>
         <strong>
           <span class="pull-right">{{item.trackName}}</span>
         </strong>
@@ -16,15 +17,45 @@
         </ion-thumbnail>
         <ion-badge *ngIf="!selectedMovie || (selectedMovie && selectedMovie.trackId !== item.trackId)" item-end>{{item.collectionPrice}}</ion-badge>
         <div *ngIf="selectedMovie && selectedMovie.trackId === item.trackId">
-            <p>
-                {{item.longDescription}}
-            </p>
+          <ion-grid>
+          <ion-row>
+            <p>{{item.shortDescription}}</p>
+          </ion-row>
+              <ion-row>
+                <ion-col col-3>
+                  Rent
+                </ion-col>
+                <ion-col col-3>
+                  Rent HD
+                </ion-col>
+                <ion-col col-3>
+                  Buy
+                </ion-col>
+                <ion-col col-3>
+                  Buy HD
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col col-3>
+                 $ {{item.trackRentalPrice}}
+                </ion-col>
+                <ion-col col-3>
+                 $ {{item.trackHdRentalPrice}}
+                </ion-col>
+                <ion-col col-3>
+                  ${{item.trackPrice}}
+                </ion-col>
+                <ion-col col-3>
+                  $ {{item.trackHdPrice}}
+                </ion-col>
+              </ion-row>
             <!--video width="320" height="240" controls>
                 <source src="movie.mp4" type="video/mp4">
                 <source src="movie.ogg" type="video/ogg">
                 Your browser does not support the video tag.
             </video-->
             <!--video width="320" height="240" src={{selectedMovie.previewUrl}} controls>Browser does not support the video tag.</video-->
+        </ion-grid>
         </div>
       </ion-item>
   </ion-list>
