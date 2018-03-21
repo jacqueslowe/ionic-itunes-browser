@@ -4,10 +4,10 @@ import { ItunesService } from '../../itunes/itunes.service';
 import { LoadingController } from 'ionic-angular';
 
 @Component({
-  selector: 'page-movie',
-  templateUrl: 'movie.html'
+  selector: 'page-book',
+  templateUrl: 'book.html'
 })
-export class MoviePage {
+export class BookPage {
   
   constructor(public navCtrl: NavController, private itunesService: ItunesService, public loadingController: LoadingController) {
   }
@@ -36,12 +36,12 @@ export class MoviePage {
     {
         this.movies= null;
         this.loader = this.loadingController.create({
-          content: "Fetching movies..."
+          content: "Fetching books..."
         });
         this.loader.present();
 
         setTimeout(() => {  
-          this.itunesService.getMovies( 
+          this.itunesService.getBooks( 
               this.searchValue
                   ).subscribe(
                               music => {this.processSucessResponse(music);},

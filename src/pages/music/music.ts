@@ -18,7 +18,7 @@ export class MusicPage {
                           );
   }
   
-  searchValue:any = "Depeche Mode";
+  searchValue:any = "";
   loader:any= null;
   music:any[]=null;
   selectedTrack:any=null;

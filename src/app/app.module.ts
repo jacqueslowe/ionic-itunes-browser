@@ -8,6 +8,7 @@ import { ItunesService } from '../itunes/itunes.service';
 import { PlayerService } from '../player/player.service';
 import { MusicPage } from '../pages/music/music';
 import { MoviePage } from '../pages/movie/movie';
+import { BookPage } from '../pages/book/book';
 import { HomePage } from '../pages/home/home';
 
 import { TabsPage } from '../pages/tabs/tabs';
@@ -20,6 +21,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     MyApp,
     MusicPage,
     MoviePage,
+    BookPage,
     HomePage,
     TabsPage
   ],
@@ -33,6 +35,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     MyApp,
     MusicPage,
     MoviePage,
+    BookPage,
     HomePage,
     TabsPage
   ],
