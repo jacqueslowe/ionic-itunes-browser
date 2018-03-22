@@ -54,7 +54,7 @@ export class ItunesService {
         let requestURL:string = this.constants.itunesUrl+
             this.searchTerm+search +
             this.searchLimit+
-            this.searchMediaType+"book";
+            this.searchMediaType+"ebook";
             
         console.log("ItunesService.getBooks(): "+ requestURL);
 
