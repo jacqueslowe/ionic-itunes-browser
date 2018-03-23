@@ -9,32 +9,33 @@ import { LoadingController } from 'ionic-angular';
 })
 export class BookPage {
   
-  constructor(public navCtrl: NavController, private itunesService: ItunesService, public loadingController: LoadingController) {
-  }
+    constructor(public navCtrl: NavController, private itunesService: ItunesService, public loadingController: LoadingController) {
+    }
 
-  searchValue:any = "";
-  movies:any[]=null;
-  errorMessage:any=null;
-  loader:any= null;
-  selectedMovie=null;
+    searchValue:any = "";
+    books:any[]=null;
+    errorMessage:any=null;
+    loader:any= null;
+    selectedBook=null;
 
-
-    play(track:any)
+    play(item:any)
     {
-      if( this.selectedMovie && this.selectedMovie.trackId === track.trackId)
+      if( this.selectedBook && this.selectedBook.trackId === item.trackId)
       {
-        this.selectedMovie=null;   
+        this.selectedBook=null;
+        return;   
       }
-      this.selectedMovie=track;
+      this.selectedBook=item;
     }
 
     searchClicked(tab:any)
     {
         this.getData();
     }   
+
     getData()
     {
-        this.movies= null;
+        this.books= null;
         this.loader = this.loadingController.create({
           content: "Fetching books..."
         });
@@ -44,13 +45,14 @@ export class BookPage {
           this.itunesService.getBooks( 
               this.searchValue
                   ).subscribe(
-                              music => {this.processSucessResponse(music);},
+                              data => {this.processSucessResponse(data);},
                               error =>  this.errorMessage = <any>error);
                   }, 1500);
     }
-    processSucessResponse(music: any[] )
+
+    processSucessResponse(data: any[] )
     {
-      this.movies = music; 
+      this.books = data; 
       this.loader.dismiss();
     }  
 }
