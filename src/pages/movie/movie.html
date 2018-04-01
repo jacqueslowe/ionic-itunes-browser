@@ -23,46 +23,17 @@
             item-end
             style="color:darkgray"
             name="arrow-up"></ion-icon>
-        <!--ion-badge  item-end>{{item.collectionPrice}}</ion-badge-->
         <div *ngIf="selectedMovie && selectedMovie.trackId === item.trackId">
           <ion-grid style="padding:0px;">
           <ion-row text-wrap>
             <p><small>{{item.longDescription}}</small></p>
           </ion-row>
-              <ion-row>
-                <ion-col style="padding:0px;" col-3>
-                  <small>Rent</small>
-                </ion-col>
-                <ion-col style="padding:0px;" col-3>
-                  <small>Rent HD</small>
-                </ion-col>
-                <ion-col style="padding:0px;" col-3>
-                  <small>Buy</small>
-                </ion-col>
-                <ion-col style="padding:0px;" col-3>
-                  <small>Buy HD</small>
-                </ion-col>
-              </ion-row>
-              <ion-row>
-                <ion-col style="padding:0px;" col-3>
-                <small>${{item.trackRentalPrice}}</small>
-                </ion-col>
-                <ion-col style="padding:0px;" col-3>
-                 <small>${{item.trackHdRentalPrice}}</small>
-                </ion-col>
-                <ion-col style="padding:0px;" col-3>
-                <small>${{item.trackPrice}}</small>
-                </ion-col>
-                <ion-col style="padding:0px;" col-3>
-                <small>${{item.trackHdPrice}}</small>
-                </ion-col>
-              </ion-row>
             <!--video width="320" height="240" controls>
                 <source src="movie.mp4" type="video/mp4">
                 <source src="movie.ogg" type="video/ogg">
                 Your browser does not support the video tag.
             </video-->
-            <!--video width="320" height="240" src={{selectedMovie.previewUrl}} controls>Browser does not support the video tag.</video-->
+            <video width="320" height="200" src={{selectedMovie.previewUrl}} controls>Browser does not support the video tag.</video>
         </ion-grid>
         </div>
       </ion-item>
