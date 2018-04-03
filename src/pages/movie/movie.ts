@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { ItunesService } from '../../itunes/itunes.service';
 import { LoadingController } from 'ionic-angular';
+import { ItunesService } from '../../itunes/itunes.service';
+import { TabService } from '../../app/tab.service';
 
 @Component({
   selector: 'page-movie',
@@ -9,15 +10,25 @@ import { LoadingController } from 'ionic-angular';
 })
 export class MoviePage {
   
-  constructor(public navCtrl: NavController, private itunesService: ItunesService, public loadingController: LoadingController) {
-  }
-
   searchValue:any = "";
   movies:any[]=null;
   errorMessage:any=null;
   loader:any= null;
   selectedMovie=null;
 
+  constructor(public navCtrl: NavController, 
+    private itunesService: ItunesService, 
+    public loadingController: LoadingController,
+    private tabService: TabService ) {
+           this.tabService.getTabStream().subscribe(
+            (val) => { 
+                    console.log("movie.TabService new tab=", val);
+                    this.selectedMovie=null;
+                    },
+            (err) => { console.log("movie.TabService.error()", err) },
+            ()    => { console.log("movie.TabService.completed") }
+            );
+        }
 
     play(track:any)
     {

@@ -6,6 +6,7 @@ import { Constants } from '../constants';
 import { MyApp } from './app.component';
 import { ItunesService } from '../itunes/itunes.service';
 import { PlayerService } from '../player/player.service';
+import { TabService } from './tab.service';
 import { MusicPage } from '../pages/music/music';
 import { MoviePage } from '../pages/movie/movie';
 import { BookPage } from '../pages/book/book';
@@ -45,6 +46,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     Constants,
     ItunesService,
     PlayerService,
+    TabService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

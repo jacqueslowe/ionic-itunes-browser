@@ -1,6 +1,5 @@
-<ion-tabs>
-  <ion-tab [root]="tab1Root" tabTitle="Home" tabIcon="home"></ion-tab>
-  <ion-tab [root]="tab2Root" tabTitle="Music" tabIcon="musical-notes"></ion-tab>
+<ion-tabs (ionChange)="tabChange($event)">
+  <ion-tab [root]="tab2Root" tabTitle="Music" tabIcon="musical-notes" ></ion-tab>
   <ion-tab [root]="tab3Root" tabTitle="Movies" tabIcon="film"></ion-tab>
   <ion-tab [root]="tab4Root" tabTitle="Books" tabIcon="book"></ion-tab>
 </ion-tabs>

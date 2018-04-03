@@ -1,29 +1,44 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { LoadingController } from 'ionic-angular';
 import { ItunesService } from '../../itunes/itunes.service';
 import { PlayerService } from '../../player/player.service';
-import { LoadingController } from 'ionic-angular';
 
+import { TabService } from '../../app/tab.service';
 @Component({
   selector: 'page-music',
   templateUrl: 'music.html'
 })
 export class MusicPage {
-  constructor(public navCtrl: NavController, private itunesService: ItunesService, public playerService: PlayerService, public loadingController: LoadingController ) {
-   
-    this.playerService.getStream().subscribe(
-                          (val) => { this.playerStateChanged();  },
-                          (err) => { console.log("MusicListComponent.playerService..subscribe.error", err) },
-                          ()    => { console.log("MusicListComponent.playerService..subscribe.complete") }
-                          );
-  }
-  
   searchValue:any = "";
   loader:any= null;
   music:any[]=null;
   selectedTrack:any=null;
   errorMessage:any=null;
 
+  constructor(public navCtrl: NavController, 
+    private itunesService: ItunesService, 
+    public playerService: PlayerService,
+    public loadingController: LoadingController,
+    private tabService: TabService ) {
+   
+    this.playerService.getStream().subscribe(
+                          (val) => { this.playerStateChanged();  },
+                          (err) => { console.log("MusicListComponent.playerService..subscribe.error", err) },
+                          ()    => { console.log("MusicListComponent.playerService..subscribe.complete") }
+                          );
+    
+        this.tabService.getTabStream().subscribe(
+        (val) => { 
+                console.log("movie.TabService new tab=", val);
+                this.selectedTrack=null;
+                this.playerService.stop(null);
+                },
+        (err) => { console.log("movie.TabService.error()", err) },
+        ()    => { console.log("movie.TabService.completed") }
+        );
+    }
+  
     searchClicked()
     {
         this.getData();

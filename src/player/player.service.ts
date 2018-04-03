@@ -16,7 +16,7 @@ export class PlayerService {
     
     private playerStateSubject: Subject<string>;
     private stream$: Observable<string>;
-    private self:any;
+   // private self:any;
 
     player = null;
     selectedTrack = null;
@@ -56,7 +56,11 @@ export class PlayerService {
     {
         this.playerStateSubject.next(newState);
     }
-
+    stop(item : any)
+    {
+        this.playerState = STATE_STOPPED;
+        this.player.pause();
+    }
     play(item : any)
     {
         console.log("PlayerService.play().item.previewUrl" + JSON.stringify(item.previewUrl) );
