@@ -20,7 +20,7 @@ export class BookPage {
   };
   public barChartLabels:string[] = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
   public barChartType:string = 'bar';
-  public barChartLegend:boolean = true;
+  public barChartLegend:boolean = false;
  
   public barChartData:any[] = [
     {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
@@ -63,7 +63,7 @@ export class BookPage {
       pointHoverBorderColor: 'rgba(148,159,177,0.8)'
     }
   ];
-  public lineChartLegend:boolean = true;
+  public lineChartLegend:boolean = false;
   public lineChartType:string = 'line';
  
   public randomize():void {
