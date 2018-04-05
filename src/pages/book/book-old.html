@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title><ion-icon name="logo-apple"></ion-icon> iTunes Books</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar [(ngModel)]="searchValue" (search)="searchClicked()" placeholder="Search iTunes books"></ion-searchbar>
+  <ion-list>    
+      <ion-item *ngFor="let item of books" class="pull-left item item-text-wrap"  
+        (click)="play(item)">
+        <div *ngIf="selectedBook && selectedBook.trackId === item.trackId" style="padding:5px;background-color:lightgray">
+            <strong>
+                {{item.trackName}}
+            </strong>
+             <br>
+            <span class="pull-right">{{item.artistName}}</span>
+            
+        </div>
+        <div *ngIf="!selectedBook || (selectedBook.trackId !== item.trackId)">
+            <strong>
+                {{item.trackName}}
+            </strong>
+            <br>
+            <span class="pull-right">{{item.artistName}}</span>
+        </div>
+        <ion-thumbnail item-start>
+          <img src={{item.artworkUrl100}}>
+        </ion-thumbnail>
+        <div *ngIf="selectedBook && selectedBook.trackId === item.trackId">
+            <hr>
+          <div text-wrap innerHtml={{item.description}}>
+          </div>
+           <!--ion-grid style="padding:0px;">
+              <ion-row>
+                <ion-col style="padding:0px;" col-3>
+                  <button ion-button>Movie</button>
+                </ion-col>
+                <ion-col style="padding:0px;" col-3>
+                  <button ion-button>Music</button>
+                </ion-col>
+              </ion-row>
+            </ion-grid-->
+        </div>
+    </ion-item>
+  </ion-list>
+</ion-content>
