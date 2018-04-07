@@ -66,6 +66,8 @@ export class BookPage {
   public lineChartLegend:boolean = false;
   public lineChartType:string = 'line';
  
+  chartType="donut";
+
   public randomize():void {
     let _lineChartData:Array<any> = new Array(this.lineChartData.length);
     for (let i = 0; i < this.lineChartData.length; i++) {
@@ -76,7 +78,10 @@ export class BookPage {
     }
     this.lineChartData = _lineChartData;
   }
- 
+ chartChanged(e:any)
+ {
+  console.log("chartChanged" + e);
+ }
   // events
   public chartClicked(e:any):void {
     console.log(e);

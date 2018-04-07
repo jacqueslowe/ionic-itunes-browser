@@ -2,26 +2,30 @@
   <ion-navbar>
     <ion-title>ChartJS</ion-title>
   </ion-navbar>
+  <ion-segment [(ngModel)]="chartType" color="primary" (ionChange)="chartChanged($event)">
+    <ion-segment-button value="donut">
+      donut
+    </ion-segment-button>
+    <ion-segment-button value="line">
+      line
+    </ion-segment-button>
+     <ion-segment-button value="bar">
+      bar
+    </ion-segment-button>
+  </ion-segment>
 </ion-header>
 
 <ion-content>
-   <div class="row">
-  <div class="col-md-12">
-  <div style="display: block">
-  <canvas baseChart
-              [data]="doughnutChartData"
-              [labels]="doughnutChartLabels"
-              [chartType]="doughnutChartType"
-              (chartHover)="chartHovered($event)"
-               [legend]="lineChartLegend"
-              (chartClick)="chartClicked($event)"></canvas>
-</div>
-</div>
-  </div>
- <div class="row">
-  <div class="col-md-12">
-    <div style="display: block;">
-    <canvas baseChart 
+      <div >
+        <canvas *ngIf="chartType=='donut'" baseChart
+                    [data]="doughnutChartData"
+                    [labels]="doughnutChartLabels"
+                    [chartType]="doughnutChartType"
+                    (chartHover)="chartHovered($event)"
+                    [legend]="lineChartLegend"
+                    (chartClick)="chartClicked($event)">
+        </canvas>
+        <canvas *ngIf="chartType=='line'" baseChart 
                 [datasets]="lineChartData"
                 [labels]="lineChartLabels"
                 [options]="lineChartOptions"
@@ -29,23 +33,16 @@
                 [legend]="lineChartLegend"
                 [chartType]="lineChartType"
                 (chartHover)="chartHovered($event)"
-                (chartClick)="chartClicked($event)"></canvas>
-    </div>
-  </div>
-  </div>
-    <div class="row">
-  <div class="col-md-12">
-  <div style="display: block">
-    <canvas baseChart
+                (chartClick)="chartClicked($event)">
+        </canvas>
+        <canvas *ngIf="chartType=='bar'" baseChart
             [datasets]="barChartData"
             [labels]="barChartLabels"
             [options]="barChartOptions"
             [legend]="barChartLegend"
             [chartType]="barChartType"
             (chartHover)="chartHovered($event)"
-            (chartClick)="chartClicked($event)"></canvas>
-  </div>
-  <button (click)="randomize()">Update</button>
-</div>
-</div>
+            (chartClick)="chartClicked($event)">
+        </canvas>
+      </div>
 </ion-content>
