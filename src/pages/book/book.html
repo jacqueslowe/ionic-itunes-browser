@@ -2,7 +2,7 @@
   <ion-navbar>
     <ion-title>ChartJS</ion-title>
   </ion-navbar>
-  <ion-segment padding [(ngModel)]="chartType" color="primary" (ionChange)="chartChanged($event)">
+  <ion-segment padding [(ngModel)]="chartType" color="primary">
     <ion-segment-button value="donut">
       donut
     </ion-segment-button>
@@ -12,37 +12,32 @@
      <ion-segment-button value="bar">
       bar
     </ion-segment-button>
+    <ion-segment-button value="all">
+      all
+    </ion-segment-button>
   </ion-segment>
 </ion-header>
-
 <ion-content padding>
-  <!--div class="row"-->
-    <canvas *ngIf="chartType=='donut'" baseChart
+    <canvas *ngIf="chartType=='donut' || chartType=='all'" baseChart
                 [data]="doughnutChartData"
                 [labels]="doughnutChartLabels"
                 [chartType]="doughnutChartType"
                 (chartHover)="chartHovered($event)"
-                [legend]="lineChartLegend"
-                (chartClick)="chartClicked($event)">
+                [legend]="lineChartLegend">
     </canvas>
-    <canvas *ngIf="chartType=='line'" baseChart 
+    <canvas *ngIf="chartType=='line' || chartType=='all'" baseChart 
             [datasets]="lineChartData"
             [labels]="lineChartLabels"
             [options]="lineChartOptions"
             [colors]="lineChartColors"
             [legend]="lineChartLegend"
-            [chartType]="lineChartType"
-            (chartHover)="chartHovered($event)"
-            (chartClick)="chartClicked($event)">
+            [chartType]="lineChartType">
     </canvas>
-    <canvas *ngIf="chartType=='bar'" baseChart
+    <canvas *ngIf="chartType=='bar' || chartType=='all'" baseChart
         [datasets]="barChartData"
         [labels]="barChartLabels"
         [options]="barChartOptions"
         [legend]="barChartLegend"
-        [chartType]="barChartType"
-        (chartHover)="chartHovered($event)"
-        (chartClick)="chartClicked($event)">
+        [chartType]="barChartType">
     </canvas>
-  <!--/div-->
 </ion-content>
